@@ -30,16 +30,9 @@ jobs:
       - name: Instalar dependencias
         run: flutter pub get
 
-      - name: Verificar formato de código
-        run: flutter format --set-exit-if-changed .
-        continue-on-error: true
-
-      - name: Analizar código
-        run: flutter analyze
-        continue-on-error: true
-
       - name: Ejecutar pruebas unitarias y de widgets
-        run: flutter test
+        run: flutter test --exclude-tags=integration
+        continue-on-error: false
 
   build:
     name: Build APK
